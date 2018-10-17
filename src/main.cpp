@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     srv_setMode.request.base_mode = 0;
     srv_setMode.request.custom_mode = "GUIDED";
     if(cl.call(srv_setMode)){
-        ROS_ERROR("setmode send ok %d value:", srv_setMode.response.success);
+        ROS_INFO("setmode send ok %d value:", srv_setMode.response.success);
     }else{
         ROS_ERROR("Failed SetMode");
         return -1;
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     mavros_msgs::CommandBool srv;
     srv.request.value = true;
     if(arming_cl.call(srv)){
-        ROS_ERROR("ARM send ok %d", srv.response.success);
+        ROS_INFO("ARM send ok %d", srv.response.success);
     }else{
         ROS_ERROR("Failed arming or disarming");
     }
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     srv_takeoff.request.min_pitch = 0;
     srv_takeoff.request.yaw = 0;
     if(takeoff_cl.call(srv_takeoff)){
-        ROS_ERROR("srv_takeoff send ok %d", srv_takeoff.response.success);
+        ROS_INFO("srv_takeoff send ok %d", srv_takeoff.response.success);
     }else{
         ROS_ERROR("Failed Takeoff");
     }
